@@ -97,7 +97,7 @@ if __name__ == "__main__":
         model.train()
         start_time = time.time()
         for batch_i, (_, imgs, targets) in enumerate(dataloader):
-            gc.collect()
+          
             batches_done = len(dataloader) * epoch + batch_i
 
             imgs = Variable(imgs.to(device))
@@ -110,7 +110,7 @@ if __name__ == "__main__":
                 # Accumulates gradient before each step
                 optimizer.step()
                 optimizer.zero_grad()
-
+            gc.collect()
             # ----------------
             #   Log progress
             # ----------------
