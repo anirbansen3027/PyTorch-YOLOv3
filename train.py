@@ -6,7 +6,7 @@ from utils.utils import *
 from utils.datasets import *
 from utils.parse_config import *
 from test import evaluate
-
+import gc
 from terminaltables import AsciiTable
 
 import os
@@ -97,6 +97,7 @@ if __name__ == "__main__":
         model.train()
         start_time = time.time()
         for batch_i, (_, imgs, targets) in enumerate(dataloader):
+            gc.collect()
             batches_done = len(dataloader) * epoch + batch_i
 
             imgs = Variable(imgs.to(device))
